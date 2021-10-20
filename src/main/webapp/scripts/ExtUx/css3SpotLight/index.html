@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>CSS3 Spotlight</title>
+		
+		<link rel="stylesheet" type="text/css" href="../ext-3.2.1/resources/css/ext-all.css" />
+		<link rel="stylesheet" type="text/css" href="colorpicker.css" />
+		
+		<script type="text/javascript" src="../ext-3.2.1/adapter/ext/ext-base-debug.js"></script>
+		<script type="text/javascript" src="../ext-3.2.1/ext-all-debug.js"></script>
+		
+		<script type="text/javascript" src="Ext.check.Gecko4.js"></script>
+		<script type="text/javascript" src="Ext.Element.CSS3Spotlight.js"></script>
+		<script type="text/javascript" src="colorpicker.js"></script>
+		<script type="text/javascript" src="colorpickerfield.js"></script>
+		
+		<script type="text/javascript">
+			var win;
+			
+			Ext.onReady(function() {
+				win = new Ext.Window({
+					title      : "Spotlight Test",
+					width      : 400,
+					height     : 300,
+					autoScroll : true,
+					layout     : "form",
+					labelWidth : 50,
+					items      : [{
+						xtype      : "simplecolorpickerfield",
+						fieldLabel : "Color",
+						name       : "color",
+						value      : "#000000",
+						ref        : "backgroundColor"
+					},{
+						xtype      : "sliderfield",
+						ref        : "opacity",
+						anchor     : "100%",
+						fieldLabel : "Opacity",
+						value      : 50,
+						minValue   : 0,
+						maxValue   : 100,
+						tipText    : function(thumb){
+							return String(thumb.value) + '%';
+						}
+					}],
+					tbar       : [{
+						text    : "Spotlight",
+						scale   : "large",
+						handler : function() {
+							win.el.CSS3Spotlight({
+								duration   : 1000,
+								background : win.backgroundColor.getValue(),
+								opacity    : win.opacity.getValue()/100
+							});
+						}
+					},"->",{
+						text    : "Spotlight (No Anim)",
+						scale   : "large",
+						handler : function() {
+							win.el.CSS3Spotlight({
+								skipAnim: true
+							});
+						}
+					}],
+					bbar       : [{
+						text    : "Hide Spotlight",
+						scale   : "large",
+						handler : function() {
+							win.el.CSS3SpotlightHide({
+								duration: 1000
+							});
+						}
+					},"->",{
+						text    : "Hide Spotlight (No Anim)",
+						scale   : "large",
+						handler : function() {
+							win.el.CSS3SpotlightHide({
+								skipAnim: true
+							});
+						}
+					}]
+				}).show();
+			});
+		</script>
+    </head>
+    <body>
+    </body>
+</html>

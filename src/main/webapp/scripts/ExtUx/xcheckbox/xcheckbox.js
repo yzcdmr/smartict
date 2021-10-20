@@ -1,0 +1,96 @@
+/**
+ * @author emrah.ekmekciler
+ */
+Ext.ns('Ext.ux.form');
+Ext.ux.form.XCheckbox = Ext.extend(Ext.form.Checkbox, {
+     offCls:'xcheckbox-off'
+    ,onCls:'xcheckbox-on'
+    ,disabledClass:'xcheckbox-disabled'
+    ,submitOffValue:'false'
+    ,submitOnValue:'true'
+    ,checked:false
+
+    ,onRender:function(ct) {
+        // call parent
+        Ext.ux.form.XCheckbox.superclass.onRender.apply(this, arguments);
+
+        // save tabIndex remove & re-create this.el
+        var tabIndex = this.el.dom.tabIndex;
+        var id = this.el.dom.id;
+        this.el.remove();
+        this.el = ct.createChild({tag:'input', type:'hidden', name:this.name, id:id});
+
+        // update value of hidden field
+        this.updateHidden();
+
+        // adjust wrap class and create link with bg image to click on
+        this.wrap.replaceClass('x-form-check-wrap', 'xcheckbox-wrap');
+        this.cbEl = this.wrap.createChild({tag:'a', href:'#', cls:this.checked ? this.onCls : this.offCls});
+
+        // reposition boxLabel if any
+        var boxLabel = this.wrap.down('label');
+        if(boxLabel) {
+            this.wrap.appendChild(boxLabel);
+        }
+
+        // support tooltip
+        if(this.tooltip) {
+            this.cbEl.set({qtip:this.tooltip});
+        }
+
+        // install event handlers
+        this.wrap.on({click:{scope:this, fn:this.onClick, delegate:'a'}});
+        this.wrap.on({keyup:{scope:this, fn:this.onClick, delegate:'a'}});
+
+        // restore tabIndex
+        this.cbEl.dom.tabIndex = tabIndex;
+    } // eo function onRender
+
+    ,onClick:function(e) {
+        if(this.disabled || this.readOnly) {
+            return;
+        }
+        if(!e.isNavKeyPress()) {
+            this.setValue(!this.checked);
+        }
+    } // eo function onClick
+
+    ,onDisable:function() {
+        this.cbEl.addClass(this.disabledClass);
+        this.el.dom.disabled = true;
+    } // eo function onDisable
+
+    ,onEnable:function() {
+        this.cbEl.removeClass(this.disabledClass);
+        this.el.dom.disabled = false;
+    } // eo function onEnable
+
+    ,setValue:function(val) {
+        if('string' == typeof val) {
+            this.checked = val === this.submitOnValue;
+        }
+        else {
+            this.checked = !(!val);
+        }
+
+        if(this.rendered && this.cbEl) {
+            this.updateHidden();
+            this.cbEl.removeClass([this.offCls, this.onCls]);
+            this.cbEl.addClass(this.checked ? this.onCls : this.offCls);
+        }
+        this.fireEvent('check', this, this.checked);
+
+    } // eo function setValue
+
+    ,updateHidden:function() {
+        this.el.dom.value = this.checked ? this.submitOnValue : this.submitOffValue;
+    } // eo function updateHidden
+
+    ,getValue:function() {
+        return this.checked;
+    } // eo function getValue
+
+}); // eo extend
+
+// register xtype
+Ext.reg('xcheckbox', Ext.ux.form.XCheckbox);

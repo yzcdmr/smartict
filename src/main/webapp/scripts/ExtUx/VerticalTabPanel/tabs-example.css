@@ -1,0 +1,52 @@
+/*!
+ * Ext JS Library 3.3.0
+ * Copyright(c) 2006-2010 Ext JS, Inc.
+ * licensing@extjs.com
+ * http://www.extjs.com/license
+ */
+.list {list-style:square;width:500px;padding-left:16px;}
+.list li{padding:2px;font-size:8pt;}
+
+pre {
+   font-size:11px; 
+}
+
+.x-tab-panel-body .x-panel-body {
+    padding:10px;
+}
+
+/* default loading indicator for ajax calls */
+.loading-indicator {
+	font-size:8pt;
+	background-image:url('../../resources/images/default/grid/loading.gif');
+	background-repeat: no-repeat;
+	background-position: left;
+	padding-left:20px;
+}
+
+
+
+.x-tab-right1 {
+	margin-bottom: -1px;
+	background: transparent url(tabs_tabs-sprite.gif) no-repeat scroll 0 0 ;
+    padding-left: 10px;
+}
+
+.x-tab-left1 {
+	background: transparent url(tabs_tabs-sprite.gif) no-repeat scroll right -301px ;
+    padding-right: 10px;
+}
+
+.x-tab-strip-inner1 {
+	background: transparent url(tabs_tabs-sprite.gif) repeat-x scroll 0 -151px ;
+	overflow: hidden;
+}
+
+.new-tab {
+    background-image:url(../feed-viewer/images/new_tab.gif) !important;
+}
+
+
+.tabs {
+    background-image:url( ../desktop/images/tabs.gif ) !important;
+}

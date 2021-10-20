@@ -1,0 +1,27 @@
+.ux-table-grid .x-grid3-cell {
+    padding: 3px 4px 3px 6px;
+}
+.ux-table-grid .x-grid3-cell {
+    border-width: 1px 0;
+    border-style: solid;
+    border-color: #FFFFFF #EDEDED #EDEDED;
+}
+.ext-ie .ux-table-grid .x-grid3-cell-inner {
+    width: 100%;
+}
+.ux-table-grid .x-grid3-row {
+    border-width: 0 !important;
+}
+.ux-table-grid .x-grid3-cell-first {
+    border-left-width: 1px;
+}
+.ux-table-grid .x-grid3-cell-last {
+    border-right-width: 1px;
+}
+.ux-table-grid .x-grid3-row-over .x-grid3-cell {
+    border-color: #ddd;
+}
+.ux-table-grid .x-grid3-row-selected .x-grid3-cell {
+    border-style: dotted;
+    border-color: #a3bae9;
+}

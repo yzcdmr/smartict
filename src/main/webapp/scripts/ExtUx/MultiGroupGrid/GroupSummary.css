@@ -1,0 +1,100 @@
+/*
+ * Ext JS Library 3.4
+ * Copyright(c) 2006-2009, Ext JS, LLC.
+ * licensing@extjs.com
+ * 
+ * http://extjs.com/license
+ */
+
+
+.x-grid-group-hd-0 
+{
+	border-bottom-color: #99BBE8;  /* standard ext blue */
+}
+
+.x-grid-group-hd-1
+{
+	border-bottom-color: #99E899;
+}
+.x-grid-group-hd-1 div.x-grid-group-title
+{
+	color: #37A037;
+}
+
+.x-grid-group-hd-2 
+{
+	border-bottom-color: #E8E899;
+}
+.x-grid-group-hd-2 div.x-grid-group-title
+{
+	color: #A0A037;
+}
+
+.x-grid-group-hd-3 
+{
+	border-bottom-color: #BDBDBD;
+}
+.x-grid-group-hd-3  div.x-grid-group-title
+{
+	color: #737373;
+}
+
+
+.x-grid3-summary-row {
+    color:#333;
+    background: #DDE5F0;
+	border-bottom:2px solid #99BBE8; /* standard ext blue */
+}
+
+.x-grid3-summary-row-0 {
+    background: #D0DEF0; /*blue*/
+    background: #DDE5F0; /*lighter blue*/
+    border-bottom:2px solid #99BBE8;
+}
+.x-grid3-summary-row-1 {
+    background: #CCFFCC; /*green*/
+    background: #E6FFE6; /*lighter green*/
+    background: #F2FFF2; /*even lighter */
+	border-bottom:2px solid #99E899;
+}
+.x-grid3-summary-row-2 {
+    background: #FFFFCC; /*yellow*/
+    background: #FFFFD9; /*lighter yellow*/
+    background: #FFFFEB; /*even lighter*/
+    border-bottom:2px solid #E8E899;
+}
+.x-grid3-summary-row-3 {
+    background: #F1F2F4; /*grey*/
+    background: #F5F5F5; /*lighter grey*/
+    background: #FAFBFC; /*even lighter*/
+    border-bottom:2px solid #BDBDBD;
+}
+
+.x-grid3-summary-header {
+	padding: 4px 4px 0px 4px;
+	font-weight: normal; 
+}
+.x-grid3-summary-header .headerText {
+	font-weight: bold; 
+}
+
+.x-grid3-summary-row .x-grid3-cell-inner {
+    font-weight:bold;
+    padding-bottom:4px;
+}
+.x-grid3-cell-first .x-grid3-cell-inner {
+    padding-left:1px;
+}
+.x-grid-hide-summary {
+    display:none;
+}
+.x-grid3-summary-msg {
+    padding:4px 16px;
+    font-weight:bold;
+}
+
+
+.x-grid3-summary-footer {
+	padding: 0px 4px 4px 4px;
+	font-weight: normal; 
+}

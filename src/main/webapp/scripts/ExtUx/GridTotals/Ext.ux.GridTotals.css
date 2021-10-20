@@ -1,0 +1,17 @@
+.x-grid3-simple-totals .x-grid3-row-last {
+    margin-bottom: 21px;
+}
+      
+.x-grid3-simple-totals .x-grid-total-row {
+    position: absolute;
+    left: 0;
+    bottom: 15px;
+    background: #F9F9F9 url(../../Ext3x/resources/images/default/grid/grid3-hrow.gif);
+}
+
+.x-grid3-simple-totals .x-grid-total-row td {
+    border-left: 1px solid #EEEEEE;
+    border-right: 1px solid #D0D0D0;
+    padding-left: 0px;
+    padding-right: 0px;
+}
