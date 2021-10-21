@@ -63,11 +63,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-         http.authorizeRequests().antMatchers("/").permitAll().and()
+/*         http.authorizeRequests().antMatchers("/").permitAll().and()
                 .authorizeRequests().antMatchers("/console/**").permitAll();
         http.csrf().disable();
-        http.headers().frameOptions().disable();
+        http.headers().frameOptions().disable();*/
 
+		http.csrf().disable()
+				.authorizeRequests()
+				.antMatchers("/login.html","/loginControl.ajax","/scripts/**").permitAll()
+				.anyRequest().authenticated();
+
+//				.authenticationEntryPoint(unauthorizedHandler)
+//				.and()
+//				.sessionManagement()
+//				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//				.and().csrf()
+//				.disable()
+//				.authorizeRequests();
+		/*http.csrf().disable();
+		http.headers().frameOptions().disable();*/
 //		http
 //				.headers()
 //				//.frameOptions().disable()//todo guvenlik acigi verdik, asagidaki whitelisted yapilandirildiktan sonra burasini kapat.
@@ -75,7 +89,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //				.and()
 //				.cors()
 //				.and()
-//				.csrf().ignoringAntMatchers("/login/**")
+//				.csrf().ignoringAntMatchers("/login.html")
 //				.disable()
 //				.exceptionHandling()
 //				.authenticationEntryPoint(unauthorizedHandler)
@@ -103,7 +117,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //						"/*/.xls",
 //						"/*/.xlsx",
 //						"/*/.txt",
-//						"/v2/api-docs", "/configuration/*", "/swagger/*", "/webjars/*","/login/*")
+//						"/v2/api-docs", "/configuration/*", "/swagger/*", "/webjars/*","/login/*,/login.html")
 //				.permitAll()
 //				.antMatchers("/api/auth/**")
 //				.permitAll()
