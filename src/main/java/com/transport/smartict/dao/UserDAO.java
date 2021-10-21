@@ -22,7 +22,7 @@ public class UserDAO extends BaseDAO {
 	}
 
 	public User findByUsername(String userName){
-		String sql="from User us where us.active=true and us.userName=:userName";
+		String sql="from User us where us.active=true and us.username=:userName";
 
 		Query query = getCurrentSession().createQuery(sql);
 

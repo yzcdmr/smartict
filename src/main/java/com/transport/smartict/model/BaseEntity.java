@@ -18,7 +18,7 @@ public abstract class BaseEntity implements Serializable {
 	@Column(name="LOG_DATE")
 	private Date logDate;
 	@Column(name="LOG_USER_ID")
-	private long logUserId;
+	private Long logUserId;
 	@Column(name="CANCEL_DATE")
 	private Date cancelDate;
 	@Column(name="CANCEL_USER_ID")
