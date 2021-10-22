@@ -18,7 +18,8 @@ public class StationController {
 
 	@RequestMapping(value = "/getStation.ajax")
 	public void getStation(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		response.getWriter().write(stationBUS.getStation().toString());
+		JSONObject data = JSONObject.fromObject(request.getParameter("data"));
+		response.getWriter().write(stationBUS.getStation(data).toString());
 	}
 
 	@RequestMapping(value = "/saveOrUpdateStation.ajax")

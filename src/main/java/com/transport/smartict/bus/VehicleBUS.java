@@ -11,9 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class VehicleBUS implements IVehicleBUS{
 	@Autowired
 	private VehicleDAO vehicleDAO;
-	public JSONObject getVehicle() {
+	public JSONObject getVehicle(JSONObject data) {
 		JSONObject sonuc = new JSONObject();
-		sonuc.put("data",vehicleDAO.getVehicle());
+		sonuc.put("data",vehicleDAO.getVehicle(data));
 		sonuc.put("success",true);
 		return sonuc;
 	}
@@ -21,8 +21,9 @@ public class VehicleBUS implements IVehicleBUS{
 	@Override
 	@Transactional(readOnly= false)
 	public JSONObject saveOrUpdateVehicle(JSONObject data) {
+		String vehicleName = data.getString("vehicleName");
 		Vehicle vehicle = new Vehicle();
-		vehicle.setVehicleName("Sinan");
+		vehicle.setVehicleName(vehicleName);
 		vehicleDAO.getCurrentSession().saveOrUpdate(vehicle);
 		JSONObject sonuc = new JSONObject();
 		sonuc.put("success",true);

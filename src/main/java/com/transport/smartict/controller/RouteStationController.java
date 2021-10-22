@@ -18,7 +18,8 @@ public class RouteStationController {
 
 	@RequestMapping(value = "/getRouteStation.ajax")
 	public void getRouteStation(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		response.getWriter().write(routeStationBUS.getRouteStation().toString());
+		JSONObject data = JSONObject.fromObject(request.getParameter("data"));
+		response.getWriter().write(routeStationBUS.getRouteStation(data).toString());
 	}
 
 	@RequestMapping(value = "/saveOrUpdateRouteStation.ajax")

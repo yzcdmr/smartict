@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class RouteVehicleBUS implements IRouteVehicleBUS{
 	@Autowired
 	private RouteVehicleDAO routeVehicleDAO;
-	public JSONObject getRouteVehicle() {
+	public JSONObject getRouteVehicle(JSONObject data) {
 		JSONObject sonuc = new JSONObject();
 		sonuc.put("data",routeVehicleDAO.getRouteVehicle());
 		sonuc.put("success",true);

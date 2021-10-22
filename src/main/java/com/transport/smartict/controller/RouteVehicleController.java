@@ -18,7 +18,8 @@ public class RouteVehicleController {
 
 	@RequestMapping(value = "/getRouteVehicle.ajax")
 	public void getRouteVehicle(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		response.getWriter().write(routeVehicleBUS.getRouteVehicle().toString());
+		JSONObject data = JSONObject.fromObject(request.getParameter("data"));
+		response.getWriter().write(routeVehicleBUS.getRouteVehicle(data).toString());
 	}
 
 	@RequestMapping(value = "/saveOrUpdateRouteVehicle.ajax")

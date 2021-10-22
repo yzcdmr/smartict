@@ -13,7 +13,7 @@ public class StationBUS implements IStationBUS {
 	@Autowired
 	private StationDAO stationDAO;
 
-	public JSONObject getStation() {
+	public JSONObject getStation(JSONObject data) {
 		JSONObject sonuc = new JSONObject();
 		sonuc.put("data", stationDAO.getStation());
 		sonuc.put("success", true);
