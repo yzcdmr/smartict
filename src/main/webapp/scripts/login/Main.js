@@ -8,7 +8,7 @@ Ext.onReady(function () {
         deferredRender: false,
         activeTab: 0,
         items: [{
-            title: '&nbsp; ONLİNE SİPARİŞ TAKİP EKRANI &nbsp;',
+            title: '&nbsp; SMARTICT LOGIN &nbsp;',
             iconCls: 'kilit2',
             id: 'login-panel',
             layout: 'hbox',
@@ -16,43 +16,20 @@ Ext.onReady(function () {
                 padding: '5',
                 pack: 'center',
                 align: 'middle'}
-        },{
-            title: '&nbsp;ONLİNE  EKRANI &nbsp;',
-            id: 'panel',
-            iconCls: 'kilit2',
-            layout: 'fit',
-            layoutConfig: {
-                align: 'stretch'
-            }
         }]
 
     });
     var viewport = new Ext.Viewport({
         layout: 'border',
         items: [
-            new Ext.BoxComponent({
-                region: 'north',
-                contentEl: 'north',
-                height: 50
-            }), {
-                region: 'south',
-                contentEl: 'south',
-                split: true,
-                height: 50,
-                minSize: 100,
-                maxSize: 200,
-                collapsible: true,
-                title: '&nbsp;',
-                margins: '0 0 0 0'
-            },
             tabPaneBilgi
         ]
     });
 
      var loginMenu=cntLoginMainController.getView();
-    Ext.getCmp('online-siparisTakip-tabPanel').hideTabStripItem('panel');
-    Ext.getCmp("panel").removeAll();
-    Ext.getCmp("panel").doLayout();
+    // Ext.getCmp('online-siparisTakip-tabPanel').hideTabStripItem('panel');
+    // Ext.getCmp("panel").removeAll();
+    // Ext.getCmp("panel").doLayout();
 
     Ext.getCmp('online-siparisTakip-tabPanel').setActiveTab('login-panel');
 

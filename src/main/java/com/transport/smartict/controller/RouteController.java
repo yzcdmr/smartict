@@ -24,6 +24,7 @@ public class RouteController {
 
 	@RequestMapping(value = "/saveOrUpdateRoute.ajax")
 	public void saveOrUpdateRoute(HttpServletRequest request,HttpServletResponse response) throws Exception {
-		response.getWriter().write(routeBUS.saveOrUpdateRoute().toString());
+		JSONObject data = JSONObject.fromObject(request.getParameter("data"));
+		response.getWriter().write(routeBUS.saveOrUpdateRoute(data).toString());
 	}
 }

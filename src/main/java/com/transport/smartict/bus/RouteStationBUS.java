@@ -21,7 +21,7 @@ public class RouteStationBUS implements IRouteStationBUS{
 
 	@Override
 	@Transactional(readOnly= false)
-	public JSONObject saveOrUpdateRouteStation() {
+	public JSONObject saveOrUpdateRouteStation(JSONObject data) {
 		RouteStation routeStation = new RouteStation();
 		routeStation.setRouteId(1l);
 		routeStation.setStationId(1l);

@@ -5,5 +5,5 @@ import net.sf.json.JSONObject;
 public interface IRouteBUS {
 	JSONObject getRoute();
 
-	JSONObject saveOrUpdateRoute();
+	JSONObject saveOrUpdateRoute(JSONObject data);
 }

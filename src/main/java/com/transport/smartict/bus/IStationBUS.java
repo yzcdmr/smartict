@@ -5,5 +5,5 @@ import net.sf.json.JSONObject;
 public interface IStationBUS {
 	JSONObject getStation();
 
-	JSONObject saveOrUpdateStation();
+	JSONObject saveOrUpdateStation(JSONObject data);
 }

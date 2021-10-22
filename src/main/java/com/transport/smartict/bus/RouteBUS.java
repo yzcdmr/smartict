@@ -21,7 +21,7 @@ public class RouteBUS implements IRouteBUS{
 
 	@Override
 	@Transactional(readOnly= false)
-	public JSONObject saveOrUpdateRoute() {
+	public JSONObject saveOrUpdateRoute(JSONObject data) {
 		Route route = new Route();
 		route.setRouteName("Sinan");
 		routeDAO.getCurrentSession().saveOrUpdate(route);

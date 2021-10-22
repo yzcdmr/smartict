@@ -5,5 +5,5 @@ import net.sf.json.JSONObject;
 public interface IVehicleBUS {
 	JSONObject getVehicle();
 
-	JSONObject saveOrUpdateVehicle();
+	JSONObject saveOrUpdateVehicle(JSONObject data);
 }

@@ -1,4 +1,7 @@
+package com.transport.smartict.controller;
+
 import com.transport.smartict.bus.IVehicleBUS;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +23,7 @@ public class VehicleController {
 
 	@RequestMapping(value = "/saveOrUpdateVehicle.ajax")
 	public void saveOrUpdateVehicle(HttpServletRequest request,HttpServletResponse response) throws Exception {
-		response.getWriter().write(vehicleBUS.saveOrUpdateVehicle().toString());
+		JSONObject data = JSONObject.fromObject(request.getParameter("data"));
+		response.getWriter().write(vehicleBUS.saveOrUpdateVehicle(data).toString());
 	}
 }

@@ -20,7 +20,7 @@ public class VehicleBUS implements IVehicleBUS{
 
 	@Override
 	@Transactional(readOnly= false)
-	public JSONObject saveOrUpdateVehicle() {
+	public JSONObject saveOrUpdateVehicle(JSONObject data) {
 		Vehicle vehicle = new Vehicle();
 		vehicle.setVehicleName("Sinan");
 		vehicleDAO.getCurrentSession().saveOrUpdate(vehicle);

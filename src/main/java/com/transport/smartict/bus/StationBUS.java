@@ -22,7 +22,7 @@ public class StationBUS implements IStationBUS {
 
 	@Override
 	@Transactional(readOnly = false)
-	public JSONObject saveOrUpdateStation() {
+	public JSONObject saveOrUpdateStation(JSONObject data) {
 		Station station = new Station();
 		station.setStationName("Sinan");
 		stationDAO.getCurrentSession().saveOrUpdate(station);
