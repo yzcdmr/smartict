@@ -19,16 +19,13 @@ dependencies {
 //    implementation 'org.springframework.boot:spring-boot-starter-web'
 //    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.hsqldb:hsqldb'
-//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-//    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
-//    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    testImplementation 'org.springframework.security:spring-security-test'
 //    compileOnly 'org.projectlombok:lombok:1.18.22'
 //    annotationProcessor 'org.projectlombok:lombok:1.18.22'
 //    implementation group : 'javax.persistence',name:'javax.persistence-api',version:'2.2'
-//    implementation group : 'org.hibernate',name:'hibernate-gradle-plugin',version:'5.4.30.Final'
-//    implementation group : 'org.hibernate',name:'hibernate-core',version:'5.4.30.Final'
     testImplementation group : 'org.hsqldb',name:'hsqldb',version:'2.6.0'
-//    implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
@@ -49,6 +46,8 @@ dependencies {
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.2'
     implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
     implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.44'
+//    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+//    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
 
 test {

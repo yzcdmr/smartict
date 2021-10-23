@@ -21,7 +21,7 @@ ViewRouteStationFormPanel = Ext.extend(Ext.form.FormPanel, {
             typeAhead: true,
             enableKeyEvents: true,
             minChars: 2,
-            mode: 'remote',
+            // mode: 'remote',
             initComponent: function () {
                 var config = {
                     mode: typeof(this.mode) == 'undefined' ? 'local' : this.mode,
@@ -65,12 +65,12 @@ ViewRouteStationFormPanel = Ext.extend(Ext.form.FormPanel, {
             typeAhead: true,
             enableKeyEvents: true,
             minChars: 2,
-            mode: 'remote',
+            // mode: 'remote',
             initComponent: function () {
                 var config = {
                     mode: typeof(this.mode) == 'undefined' ? 'local' : this.mode,
                     valueField: "id",
-                    displayField: "routeName",
+                    displayField: "stationName",
 
                     store: typeof(this.store) == 'undefined' ? new Ext.data.JsonStore({
                         proxy: new Ext.data.HttpProxy({

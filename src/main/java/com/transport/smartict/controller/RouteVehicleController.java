@@ -25,6 +25,12 @@ public class RouteVehicleController {
 	@RequestMapping(value = "/saveOrUpdateRouteVehicle.ajax")
 	public void saveOrUpdateRouteVehicle(HttpServletRequest request,HttpServletResponse response) throws Exception {
 		JSONObject data = JSONObject.fromObject(request.getParameter("data"));
-		response.getWriter().write(routeVehicleBUS.saveOrUpdateRouteVehicle().toString());
+		response.getWriter().write(routeVehicleBUS.saveOrUpdateRouteVehicle(data).toString());
+	}
+
+	@RequestMapping(value = "/deleteRouteVehicle.ajax")
+	public void deleteRouteVehicle(HttpServletRequest request,HttpServletResponse response) throws Exception {
+		String id = request.getParameter("id");
+		response.getWriter().write(routeVehicleBUS.deleteRouteVehicle(id).toString());
 	}
 }

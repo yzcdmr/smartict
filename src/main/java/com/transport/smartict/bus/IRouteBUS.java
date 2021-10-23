@@ -6,4 +6,6 @@ public interface IRouteBUS {
 	JSONObject getRoute(JSONObject data);
 
 	JSONObject saveOrUpdateRoute(JSONObject data);
+
+	JSONObject deleteRoute(String id);
 }

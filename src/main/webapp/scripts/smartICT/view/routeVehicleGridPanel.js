@@ -11,6 +11,9 @@ ViewRouteVehicleGridPanelUi = Ext.extend(Ext.grid.GridPanel, {
     },
     stripeRows : true,
     initComponent : function() {
+        this.btnSil = new Ext.Button({
+            text : '<b>Sil</b>'
+        });
         var rec = new Ext.data.Record.create([
             {
                 name: 'id'
@@ -48,6 +51,7 @@ ViewRouteVehicleGridPanelUi = Ext.extend(Ext.grid.GridPanel, {
 
             ]
         });
+        this.tbar = ['->',this.btnSil];
         this.selModel = new Ext.grid.RowSelectionModel({
             singleSelect : true
         });

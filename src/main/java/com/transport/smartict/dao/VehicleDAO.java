@@ -13,9 +13,12 @@ import java.util.Map;
 @Repository
 public class VehicleDAO extends BaseDAO{
 	public List<Map<String,Object>> getVehicle(JSONObject data) {
-		String vehicleName = data.getString("vehicleName");
+		String vehicleName = "";
+		if(!data.isNullObject()){
+			vehicleName = data.getString("vehicleName");
+		}
 		Criteria crit = getCurrentSession().createCriteria(Vehicle.class);
-		if(vehicleName!=null){
+		if(!vehicleName.equals("") && vehicleName!=null){
 			crit.add(Restrictions.eq("vehicleName", vehicleName));
 		}
 		crit.addOrder(Order.asc("vehicleName"));

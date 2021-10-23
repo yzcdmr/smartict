@@ -28,4 +28,10 @@ public class RouteController {
 		JSONObject data = JSONObject.fromObject(request.getParameter("data"));
 		response.getWriter().write(routeBUS.saveOrUpdateRoute(data).toString());
 	}
+
+	@RequestMapping(value = "/deleteRoute.ajax")
+	public void deleteRoute(HttpServletRequest request,HttpServletResponse response) throws Exception {
+		String id = request.getParameter("id");
+		response.getWriter().write(routeBUS.deleteRoute(id).toString());
+	}
 }

@@ -27,4 +27,10 @@ public class StationController {
 		JSONObject data = JSONObject.fromObject(request.getParameter("data"));
 		response.getWriter().write(stationBUS.saveOrUpdateStation(data).toString());
 	}
+
+	@RequestMapping(value = "/deleteStation.ajax")
+	public void deleteStation(HttpServletRequest request,HttpServletResponse response) throws Exception {
+		String id = request.getParameter("id");
+		response.getWriter().write(stationBUS.deleteStation(id).toString());
+	}
 }

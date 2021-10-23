@@ -15,7 +15,7 @@ public class StationBUS implements IStationBUS {
 
 	public JSONObject getStation(JSONObject data) {
 		JSONObject sonuc = new JSONObject();
-		sonuc.put("data", stationDAO.getStation());
+		sonuc.put("data", stationDAO.getStation(data));
 		sonuc.put("success", true);
 		return sonuc;
 	}
@@ -23,8 +23,25 @@ public class StationBUS implements IStationBUS {
 	@Override
 	@Transactional(readOnly = false)
 	public JSONObject saveOrUpdateStation(JSONObject data) {
+		String stationName = data.getString("stationName");
+		JSONObject sonuc = new JSONObject();
+		if(stationName.equals("") || stationName.equals(null)){
+			sonuc.put("success",false);
+			sonuc.put("message","Station Name can't Null,Please check value");
+			return sonuc;
+		}
 		Station station = new Station();
-		station.setStationName("Sinan");
+		station.setStationName(stationName);
+		stationDAO.getCurrentSession().saveOrUpdate(station);
+		sonuc.put("success", true);
+		return sonuc;
+	}
+
+	@Override
+	@Transactional(readOnly = false)
+	public JSONObject deleteStation(String id) {
+		Station station = stationDAO.getCurrentSession().load(Station.class, id);
+		station.setActive(false);
 		stationDAO.getCurrentSession().saveOrUpdate(station);
 		JSONObject sonuc = new JSONObject();
 		sonuc.put("success", true);

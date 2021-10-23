@@ -16,6 +16,4 @@ public class Vehicle extends BaseEntity {
 	private Long id;
 	@Column(name="VEHICLE_NAME")
 	private String vehicleName;
-	@Column(name="PLATE")
-	private String plate;
 }

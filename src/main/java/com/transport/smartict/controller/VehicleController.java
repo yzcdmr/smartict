@@ -27,4 +27,10 @@ public class VehicleController {
 		JSONObject data = JSONObject.fromObject(request.getParameter("data"));
 		response.getWriter().write(vehicleBUS.saveOrUpdateVehicle(data).toString());
 	}
+
+	@RequestMapping(value = "/deleteVehicle.ajax")
+	public void deleteVehicle(HttpServletRequest request,HttpServletResponse response) throws Exception {
+		String id = request.getParameter("id");
+		response.getWriter().write(vehicleBUS.deleteVehicle(id).toString());
+	}
 }

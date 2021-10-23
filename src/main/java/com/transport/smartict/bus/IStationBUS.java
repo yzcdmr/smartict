@@ -6,4 +6,6 @@ public interface IStationBUS {
 	JSONObject getStation(JSONObject data);
 
 	JSONObject saveOrUpdateStation(JSONObject data);
+
+	JSONObject deleteStation(String id);
 }

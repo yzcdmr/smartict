@@ -4,6 +4,10 @@ ViewRouteGridPanelUi = Ext.extend(Ext.grid.GridPanel, {
     frame : true,
     layout: 'fit',
     initComponent : function() {
+        this.btnSil = new Ext.Button({
+            text : '<b>Sil</b>'
+        });
+
         var rec = new Ext.data.Record.create([
             {
                 name: 'id'
@@ -36,6 +40,7 @@ ViewRouteGridPanelUi = Ext.extend(Ext.grid.GridPanel, {
 
             ]
         });
+        this.tbar = ['->',this.btnSil];
         this.selModel = new Ext.grid.RowSelectionModel({
             singleSelect : true
         });

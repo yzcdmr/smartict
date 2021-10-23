@@ -74,7 +74,6 @@ CntLoginMainController.prototype = {
                       kullaniciSifre : kullaniciSifre
                  },
                  success : function(response, options) {
-                     debugger;
                      var jsonData = Ext.util.JSON.decode(response.responseText.trim());
                      if (!jsonData.success) {
                          showErrorMsg(jsonData.message);

@@ -97,30 +97,6 @@ CntSmartIctMainPanel.prototype = {
                 }
             ]
         }, {
-            title: 'Vehicle',
-            layout: 'hbox',
-            layoutConfig: {
-                align: 'stretch',
-            },
-            items: [
-                {
-                    layout: 'fit',
-                    layoutConfig: {
-                        align: 'stretch'
-                    },
-                    flex: .2,
-                    items: [viewVehicleFormPanel]
-                },
-                {
-                    layout: 'fit',
-                    layoutConfig: {
-                        align: 'stretch'
-                    },
-                    flex: .8,
-                    items: [viewVehicleGridPanel]
-                }
-            ]
-        }, {
             title: 'Route Station',
             layout: 'hbox',
             layoutConfig: {
@@ -142,6 +118,30 @@ CntSmartIctMainPanel.prototype = {
                     },
                     flex: .8,
                     items: [viewRouteStationGridPanel]
+                }
+            ]
+        }, {
+            title: 'Vehicle',
+            layout: 'hbox',
+            layoutConfig: {
+                align: 'stretch',
+            },
+            items: [
+                {
+                    layout: 'fit',
+                    layoutConfig: {
+                        align: 'stretch'
+                    },
+                    flex: .2,
+                    items: [viewVehicleFormPanel]
+                },
+                {
+                    layout: 'fit',
+                    layoutConfig: {
+                        align: 'stretch'
+                    },
+                    flex: .8,
+                    items: [viewVehicleGridPanel]
                 }
             ]
         }, {
@@ -243,7 +243,7 @@ CntSmartIctMainPanel.prototype = {
 
         viewStationFormPanel.btnAra.handler = function () {
             viewStationGridPanel.getStore().load();
-        }
+        };
         viewStationFormPanel.btnKaydet.handler = function () {
             Ext.Ajax.request({
                 url : '../station/saveOrUpdateStation.ajax',
@@ -262,7 +262,31 @@ CntSmartIctMainPanel.prototype = {
                     showErrorMsg();
                 }
             });
-        }
+        };
+        viewStationGridPanel.btnSil.handler = function () {
+            if(!viewStationGridPanel.hasSelected()){
+                showWarningMsg("Please select record which you want!");
+                return;
+            }
+            Ext.Ajax.request({
+                url : '../station/deleteStation.ajax',
+                params : {
+                     id:viewStationGridPanel.getSelectedData().id
+                },
+                success : function(response, options) {
+                    var jsonData = Ext.util.JSON.decode(response.responseText.trim());
+                    if (jsonData.success) {
+                        viewStationGridPanel.getStore().load();
+                    } else {
+                        showErrorMsg(jsonData.message);
+                    }
+                },
+                failure : function(response, options) {
+                    showErrorMsg();
+                }
+            });
+        };
+
         viewRouteFormPanel.btnAra.handler = function () {
             viewRouteGridPanel.getStore().load();
         };
@@ -285,12 +309,36 @@ CntSmartIctMainPanel.prototype = {
                 }
             });
         };
+        viewRouteGridPanel.btnSil.handler = function () {
+            if(!viewRouteGridPanel.hasSelected()){
+                showWarningMsg("Please select record which you want!");
+                return;
+            }
+            Ext.Ajax.request({
+                url : '../route/deleteRoute.ajax',
+                params : {
+                    id:viewRouteGridPanel.getSelectedData().id
+                },
+                success : function(response, options) {
+                    var jsonData = Ext.util.JSON.decode(response.responseText.trim());
+                    if (jsonData.success) {
+                        viewRouteGridPanel.getStore().load();
+                    } else {
+                        showErrorMsg(jsonData.message);
+                    }
+                },
+                failure : function(response, options) {
+                    showErrorMsg();
+                }
+            });
+        };
+
         viewVehicleFormPanel.btnAra.handler = function () {
             viewVehicleGridPanel.getStore().load();
         };
         viewVehicleFormPanel.btnKaydet.handler = function () {
             Ext.Ajax.request({
-                url : '../route/saveOrUpdateRoute.ajax',
+                url : '../vehicle/saveOrUpdateVehicle.ajax',
                 params : {
                      data:Ext.encode(viewVehicleFormPanel.getForm().getValues())
                 },
@@ -307,6 +355,30 @@ CntSmartIctMainPanel.prototype = {
                 }
             });
         };
+        viewVehicleGridPanel.btnSil.handler = function () {
+            if(!viewVehicleGridPanel.hasSelected()){
+                showWarningMsg("Please select record which you want!");
+                return;
+            }
+            Ext.Ajax.request({
+                url : '../vehicle/deleteVehicle.ajax',
+                params : {
+                    id:viewVehicleGridPanel.getSelectedData().id
+                },
+                success : function(response, options) {
+                    var jsonData = Ext.util.JSON.decode(response.responseText.trim());
+                    if (jsonData.success) {
+                        viewVehicleGridPanel.getStore().load();
+                    } else {
+                        showErrorMsg(jsonData.message);
+                    }
+                },
+                failure : function(response, options) {
+                    showErrorMsg();
+                }
+            });
+        };
+
         viewRouteStationFormPanel.btnAra.handler = function () {
             viewRouteStationGridPanel.getStore().load();
         };
@@ -329,15 +401,61 @@ CntSmartIctMainPanel.prototype = {
                 }
             });
         };
+        viewRouteStationGridPanel.btnSil.handler = function () {
+            if(!viewRouteStationGridPanel.hasSelected()){
+                showWarningMsg("Please select record which you want!");
+                return;
+            }
+            Ext.Ajax.request({
+                url : '../routeStation/deleteRouteStation.ajax',
+                params : {
+                    id:viewRouteStationGridPanel.getSelectedData().id
+                },
+                success : function(response, options) {
+                    var jsonData = Ext.util.JSON.decode(response.responseText.trim());
+                    if (jsonData.success) {
+                        viewRouteStationGridPanel.getStore().load();
+                    } else {
+                        showErrorMsg(jsonData.message);
+                    }
+                },
+                failure : function(response, options) {
+                    showErrorMsg();
+                }
+            });
+        };
 
         viewRouteVehicleFormPanel.btnAra.handler = function () {
             viewRouteVehicleGridPanel.getStore().load();
         };
         viewRouteVehicleFormPanel.btnKaydet.handler = function () {
             Ext.Ajax.request({
-                url : '../routeVehicle/saveOrUpdateRouteVehizle.ajax',
+                url : '../routeVehicle/saveOrUpdateRouteVehicle.ajax',
                 params : {
                      data:Ext.encode(viewRouteVehicleFormPanel.getForm().getValues())
+                },
+                success : function(response, options) {
+                    var jsonData = Ext.util.JSON.decode(response.responseText.trim());
+                    if (jsonData.success) {
+                        viewRouteVehicleGridPanel.getStore().load();
+                    } else {
+                        showErrorMsg(jsonData.message);
+                    }
+                },
+                failure : function(response, options) {
+                    showErrorMsg();
+                }
+            });
+        };
+        viewRouteVehicleGridPanel.btnSil.handler = function () {
+            if(!viewRouteVehicleGridPanel.hasSelected()){
+                showWarningMsg("Please select record which you want!");
+                return;
+            }
+            Ext.Ajax.request({
+                url : '../routeVehicle/deleteRouteVehicle.ajax',
+                params : {
+                    id:viewRouteVehicleGridPanel.getSelectedData().id
                 },
                 success : function(response, options) {
                     var jsonData = Ext.util.JSON.decode(response.responseText.trim());
