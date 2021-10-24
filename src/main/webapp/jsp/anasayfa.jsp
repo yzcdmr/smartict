@@ -15,9 +15,14 @@
     <link type="text/css" rel="stylesheet" href="../scripts/ext34x/resources/css/ext-all.css">
     <%--    <link type="text/css" rel="stylesheet" href="../styles/baseStyle.css">--%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <%--<script src="../scripts/ExtUx/property/property.js"></script>--%>
+
+<%--    <script src="../scripts/ext34x/adapter/ext/ext-base-debug.js"></script>--%>
+<%--    <script src="../scripts/ext34x/ext-all-debug.js"></script>--%>
+
     <script src="../scripts/ext34x/adapter/ext/ext-base.js"></script>
     <script src="../scripts/ext34x/ext-all.js"></script>
+    <link type="text/css" rel="stylesheet" href="../scripts/ExtUx/SuperBoxSelect/superboxselect.css">
+    <script src="../scripts/ExtUx/SuperBoxSelect/SuperBoxSelect.js"></script>
     <%--<script src="../scripts/kbs/onlineSiparisTakip/login/js/md5.js"></script>--%>
     <%--<script src="../scripts/kbs/onlineSiparisTakip/login/js/captcha.js"></script>--%>
     <script src='https://www.google.com/recaptcha/api.js?render=explicit' async></script>

@@ -47,7 +47,7 @@ public class RouteVehicleBUS implements IRouteVehicleBUS{
 	@Override
 	@Transactional(readOnly = false)
 	public JSONObject deleteRouteVehicle(String id) {
-		RouteVehicle routeVehicle = routeVehicleDAO.getCurrentSession().load(RouteVehicle.class, id);
+		RouteVehicle routeVehicle = routeVehicleDAO.getCurrentSession().load(RouteVehicle.class,  Long.valueOf(id));
 		routeVehicle.setActive(false);
 		routeVehicleDAO.getCurrentSession().saveOrUpdate(routeVehicle);
 		JSONObject sonuc = new JSONObject();

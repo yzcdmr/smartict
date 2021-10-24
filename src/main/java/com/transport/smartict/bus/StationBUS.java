@@ -40,7 +40,7 @@ public class StationBUS implements IStationBUS {
 	@Override
 	@Transactional(readOnly = false)
 	public JSONObject deleteStation(String id) {
-		Station station = stationDAO.getCurrentSession().load(Station.class, id);
+		Station station = stationDAO.getCurrentSession().load(Station.class,  Long.valueOf(id));
 		station.setActive(false);
 		stationDAO.getCurrentSession().saveOrUpdate(station);
 		JSONObject sonuc = new JSONObject();

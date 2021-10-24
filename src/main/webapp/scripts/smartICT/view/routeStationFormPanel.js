@@ -51,38 +51,40 @@ ViewRouteStationFormPanel = Ext.extend(Ext.form.FormPanel, {
 
         this.routeCombo = new routeCombo();
 
-        var stationCombo = Ext.extend(Ext.form.ComboBox, {
-            hiddenName: 'stationId',
-            selectOnFocus: true,
-            emptyText: 'Seçiniz',
+        var stationCombo = Ext.extend(Ext.ux.form.SuperBoxSelect, {
             fieldLabel: 'Station',
-            editable: true,
-            forceSelection: true,
-            autoScroll: true,
+            hiddenName: 'stationId',
+            autoScroll	: true,
             triggerAction: 'all',
-            mode: 'local',
+            minChars	: 2,
+            mode		: 'local',
+            pageSize 	: 20,
             anchor: '80%',
-            typeAhead: true,
-            enableKeyEvents: true,
-            minChars: 2,
-            // mode: 'remote',
+            listEmptyText : 'Kayıt bulunamadı',
+            emptyText 	: 'Çoklu Seçim',
+            queryDelay	: 0,
             initComponent: function () {
-                var config = {
-                    mode: typeof(this.mode) == 'undefined' ? 'local' : this.mode,
-                    valueField: "id",
-                    displayField: "stationName",
 
-                    store: typeof(this.store) == 'undefined' ? new Ext.data.JsonStore({
-                        proxy: new Ext.data.HttpProxy({
-                            url: '../station/getStation.ajax'
-                        }),
-                        restful: true,
-                        autoLoad: true,
-                        fields: ['id', 'stationName'],
-                        totalProperty: "totalCount",
-                        baseParams: {},
-                        root: 'data'
-                    }) : this.store
+                var recSuperBox = new Ext.data.Record.create([
+                    { name : 'id', type : 'int' },
+                    { name : 'stationName', type : 'string' }
+                ]);
+
+                var storeSuperBox = new Ext.data.JsonStore({
+                    url		: '../station/getStation.ajax',
+                    fields	: recSuperBox,
+                    autoLoad: true,
+                    totalProperty: "totalCount",
+                    root	: 'data'
+                });
+
+                this.minListWidth = 500;
+
+                var config = {
+                    mode		: typeof(this.mode) == 'undefined' ? 'local' : this.mode,
+                    store		: storeSuperBox,
+                    valueField	: 'id',
+                    displayField: 'stationName'
                 };
                 Ext.apply(this, config);
                 Ext.apply(this.initialConfig, config);
@@ -95,7 +97,7 @@ ViewRouteStationFormPanel = Ext.extend(Ext.form.FormPanel, {
 
         this.stationCombo = new stationCombo();
 
-        this.items = [this.stationCombo,this.routeCombo];
+        this.items = [this.routeCombo,this.stationCombo];
 
         this.btnAra = new Ext.Button({
             text: 'Ara',

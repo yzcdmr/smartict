@@ -23,8 +23,10 @@ public class VehicleBUS implements IVehicleBUS{
 	@Transactional(readOnly= false)
 	public JSONObject saveOrUpdateVehicle(JSONObject data) {
 		String vehicleName = data.getString("vehicleName");
+		String plate = data.getString("plate");
 		Vehicle vehicle = new Vehicle();
 		vehicle.setVehicleName(vehicleName);
+		vehicle.setPlate(plate);
 		vehicleDAO.getCurrentSession().saveOrUpdate(vehicle);
 		JSONObject sonuc = new JSONObject();
 		sonuc.put("success",true);

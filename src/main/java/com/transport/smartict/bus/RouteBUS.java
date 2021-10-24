@@ -40,7 +40,7 @@ public class RouteBUS implements IRouteBUS{
 	@Override
 	@Transactional(readOnly = false)
 	public JSONObject deleteRoute(String id) {
-		Route route = routeDAO.getCurrentSession().load(Route.class, id);
+		Route route = routeDAO.getCurrentSession().load(Route.class,  Long.valueOf(id));
 		route.setActive(false);
 		routeDAO.getCurrentSession().saveOrUpdate(route);
 		JSONObject sonuc = new JSONObject();

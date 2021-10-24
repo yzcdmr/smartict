@@ -2,11 +2,16 @@ package com.transport.smartict.bus;
 
 import com.transport.smartict.dao.RouteStationDAO;
 import com.transport.smartict.model.RouteStation;
-import com.transport.smartict.model.Station;
+import com.transport.smartict.model.RouteStationDetail;
+import net.sf.json.JSON;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 @Service
@@ -15,7 +20,16 @@ public class RouteStationBUS implements IRouteStationBUS{
 	private RouteStationDAO routeStationDAO;
 	public JSONObject getRouteStation(JSONObject data) {
 		JSONObject sonuc = new JSONObject();
-		sonuc.put("data",routeStationDAO.getRouteStation(data));
+		List<RouteStation> dat = routeStationDAO.getRouteStation(data);
+//		List<RouteStationDetail> routeStationDetailList =
+//		JSONArray jsonArray = new JSONArray();
+
+//		String stationName = dat.stream().forEach(x->{
+//			JSONObject sendObject = new JSONObject();
+//			sendObject.put("routeName",x.getRoute().getRouteName());
+//			jsonArray.add(sendObject)
+//		});
+		sonuc.put("data",dat);
 		sonuc.put("success",true);
 		return sonuc;
 	}
@@ -23,10 +37,10 @@ public class RouteStationBUS implements IRouteStationBUS{
 	@Override
 	@Transactional(readOnly= false)
 	public JSONObject saveOrUpdateRouteStation(JSONObject data) {
-		Long stationId = data.getLong("stationId");
+		String stationIds = data.getString("stationId");
 		Long routeId = data.getLong("routeId");
 		JSONObject sonuc = new JSONObject();
-		if(stationId.equals(null)){
+		if(stationIds.equals(null)){
 			sonuc.put("success",false);
 			sonuc.put("message","Station can't Null,Please select one");
 			return sonuc;
@@ -37,10 +51,24 @@ public class RouteStationBUS implements IRouteStationBUS{
 			return sonuc;
 		}
 
+		JSONObject par = new JSONObject();
+		par.put("routeId",routeId);
+		Boolean check = routeStationDAO.getRouteStation(par).size()>0;
+		if(check){
+			sonuc.put("success",false);
+			sonuc.put("message","You have already defined a route,Please select another one!");
+			return sonuc;
+		}
 		RouteStation routeStation = new RouteStation();
 		routeStation.setRouteId(routeId);
-		routeStation.setStationId(stationId);
 		routeStationDAO.getCurrentSession().saveOrUpdate(routeStation);
+		String[] sIds = stationIds.replace("[","").replace("]","").replace("\"","").split(",");
+		for (String stationId : sIds) {
+			RouteStationDetail routeStationDetail = new RouteStationDetail();
+			routeStationDetail.setRouteStation(routeStation);
+			routeStationDetail.setStationId(Long.valueOf(stationId));
+			routeStationDAO.getCurrentSession().saveOrUpdate(routeStation);
+		}
 		sonuc.put("success",true);
 		return sonuc;
 	}
@@ -48,7 +76,7 @@ public class RouteStationBUS implements IRouteStationBUS{
 	@Override
 	@Transactional(readOnly = false)
 	public JSONObject deleteRouteStation(String id) {
-		RouteStation routeStation = routeStationDAO.getCurrentSession().load(RouteStation.class, id);
+		RouteStation routeStation = routeStationDAO.getCurrentSession().load(RouteStation.class, Long.valueOf(id));
 		routeStation.setActive(false);
 		routeStationDAO.getCurrentSession().saveOrUpdate(routeStation);
 		JSONObject sonuc = new JSONObject();

@@ -13,7 +13,14 @@ ViewVehicleFormPanel = Ext.extend(Ext.form.FormPanel, {
             fieldLabel	: 'Vehicle Name'
         });
 
-        this.items = [this.txtVehicleName];
+        this.txtPlate = new Ext.form.TextField({
+            name		: 'plate',
+            anchor: '80%',
+            fieldLabel	: 'Plate',
+            allowBlank : false
+        });
+
+        this.items = [this.txtVehicleName,this.txtPlate];
 
         this.btnAra = new Ext.Button({
             text: 'Ara',

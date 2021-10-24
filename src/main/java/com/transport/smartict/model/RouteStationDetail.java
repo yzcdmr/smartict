@@ -6,16 +6,19 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name="VEHICLE")
+@Table(name="ROUTE_STATION")
 @Data
-public class Vehicle extends BaseEntity {
+public class RouteStationDetail extends BaseEntity {
 	@Id
 	@Column(name = "ID", nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO,generator = "seq")
 	@GenericGenerator(name="seq",strategy = "increment")
 	private Long id;
-	@Column(name="VEHICLE_NAME")
-	private String vehicleName;
-	@Column(name="PLATE",nullable = false)
-	private String plate;
+
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name="ROUTE_STATION_ID")
+	private RouteStation routeStation;
+
+	@Column(name="STATION_ID")
+	private Long stationId;
 }

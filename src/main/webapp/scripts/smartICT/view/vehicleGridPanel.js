@@ -3,9 +3,6 @@ ViewVehicleGridPanelUi = Ext.extend(Ext.grid.GridPanel, {
     // height : 250,
     frame : true,
     layout: 'fit',
-    loadMask : {
-        msg : language.UY011
-    },
     viewConfig : {
         forceFit : true
     },
@@ -19,6 +16,8 @@ ViewVehicleGridPanelUi = Ext.extend(Ext.grid.GridPanel, {
                 name: 'id'
             },{
                 name: 'vehicleName'
+            },{
+                name: 'plate'
             }
         ]);
 
@@ -42,6 +41,10 @@ ViewVehicleGridPanelUi = Ext.extend(Ext.grid.GridPanel, {
                 {
                     header : 'Vehicle Name',
                     dataIndex : 'vehicleName',
+                },
+                {
+                    header : 'Plate',
+                    dataIndex : 'plate',
                 }
 
             ]
