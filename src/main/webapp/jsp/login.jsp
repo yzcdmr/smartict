@@ -8,7 +8,6 @@
         var language = [];
         language.UY011='Yükleniyor';
     </script>
-<%--    <link rel="shortcut icon" href="../images/akgunicon.ico">--%>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="expires" content="86400"/>
     <title>${title}</title>
@@ -27,15 +26,11 @@
     <script src="../scripts/ExtUx/TabCloseMenu.js"></script>
     <script src="../scripts/ExtUx/RowEditor/VolRowEditor.js"></script>
     <script src="../scripts/ExtUx/GridSummary/Ext.ux.Summary.js"></script>
-
     <script src="../scripts/login/view/LoginFormPanel.js"></script>
     <script src="../scripts/login/view/LoginMainPanel.js"></script>
     <script src="../scripts/login/controller/LoginFormPanel.js"></script>
     <script src="../scripts/login/LoginMainController.js"></script>
-
     <script src="../scripts/login/Main.js"></script>
-
-    <!--<script type="text/javascript" src="//www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script> -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
 
     <script src="../scripts/ExtUx/miframe.js"></script>
@@ -47,22 +42,12 @@
 <input type="hidden" id="publicRecaptiva" value='${publicRecaptiva}'/>
 <div id="north">
     <table border="0" style="width:100%">
-        <%--<tr class="ePortalKurumAdi">
-            <td width="50px">
-                <div class="sblogo50"></div>
-            </td>
-&lt;%&ndash;            <td>${kurumBaslik}</td>&ndash;%&gt;
-            <td width="50px">
-                <div class="sblogo50"></div>
-            </td>
-        </tr>--%>
     </table>
 
 </div>
 <div id="south" align="center">
     <font color="black">
         <b>Ayşegül YAZICI DEMİR</b> © 2021&nbsp;&nbsp; Tüm hakları saklıdır.&nbsp;&nbsp;
-<%--        <img src="../images/akgunicon.png" alt="akgunIcon"/>--%>
     </font>
 </div>
 </body>

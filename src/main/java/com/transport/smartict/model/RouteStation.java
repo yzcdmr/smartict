@@ -22,6 +22,4 @@ public class RouteStation extends BaseEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="ROUTE_ID",updatable = false,insertable = false)
 	private Route route;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "routeStation", cascade = CascadeType.ALL)
-	private List<RouteStationDetail> routeStationDetailList= new ArrayList<RouteStationDetail>();
 }

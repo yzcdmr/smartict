@@ -6,7 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name="ROUTE_STATION")
+@Table(name="ROUTE_STATION_DETAIL")
 @Data
 public class RouteStationDetail extends BaseEntity {
 	@Id
@@ -15,10 +15,14 @@ public class RouteStationDetail extends BaseEntity {
 	@GenericGenerator(name="seq",strategy = "increment")
 	private Long id;
 
-	@OneToMany(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="ROUTE_STATION_ID")
 	private RouteStation routeStation;
 
 	@Column(name="STATION_ID")
 	private Long stationId;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="STATION_ID",updatable = false,insertable = false)
+	private Station station;
 }
